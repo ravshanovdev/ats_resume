@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'services',
     'rest_framework',
     'portfolio',
+    'allinoneapp',
 
     'drf_yasg',
 
