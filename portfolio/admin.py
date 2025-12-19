@@ -4,8 +4,12 @@ from .models.product_models import Category, UserOpinionAboutProduct, Product
 from .models.blog import Blog
 
 
-admin.site.register(Category)
 admin.site.register(Blog)
+
+@admin.register(Category)
+class CategoryModelAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+
 
 
 class UserOpinionAboutProductInline(admin.StackedInline):

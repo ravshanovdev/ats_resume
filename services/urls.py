@@ -13,8 +13,8 @@ urlpatterns = [
     path('get_used_techno/<int:pk>/', GetUsedTechnologyAndOthersAPIView.as_view(), ),
 
     path('get_client_opinion/<int:pk>/', GetClientOpinionAPIView.as_view(), ),
-    path("get_frequently_question/", GetFrequentlyQuestionAPIView.as_view(), ),
-    path("get_success_dev/", GetSuccessfullyDevelopmentAPIView.as_view(), ),
+    # path("get_frequently_question/", GetFrequentlyQuestionAPIView.as_view(), ),
+    path("get_success_dev/<int:pk>/", GetSuccessfullyDevelopmentAPIView.as_view(), ),
     path("tell_us_about_your_project/", TellUsAboutYourProjectAPIView.as_view(), ),
 
 

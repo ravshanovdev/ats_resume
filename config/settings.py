@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'portfolio',
 
+    'drf_yasg',
+
 
 ]
 
