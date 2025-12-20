@@ -11,6 +11,15 @@ class Blog(models.Model):
         return self.title
 
 
+class TeamMembers(models.Model):
+    name = models.CharField(max_length=150)
+    description = models.TextField()
+    picture = models.ImageField(upload_to='images/', blank=True)
+
+    def __str__(self):
+        return self.name
+
+
 
 
 

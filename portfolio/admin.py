@@ -1,10 +1,11 @@
 from django.contrib import admin
 from .models.location_models import Location, HelperLocation
 from .models.product_models import Category, UserOpinionAboutProduct, Product
-from .models.blog import Blog
+from .models.blog import Blog, TeamMembers
 
 
 admin.site.register(Blog)
+admin.site.register(TeamMembers)
 
 @admin.register(Category)
 class CategoryModelAdmin(admin.ModelAdmin):
