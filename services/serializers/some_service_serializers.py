@@ -2,12 +2,6 @@ from rest_framework import serializers
 from services.models.some_service_models import FirstInfoAnyService, SpecialData, UsedTechnologyAndOthers
 
 
-class FirstInfoAnyServiceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FirstInfoAnyService
-        fields = ['id', 'title', 'description', 'image']
-
-
 class SpecialDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = SpecialData
@@ -17,8 +11,13 @@ class SpecialDataSerializer(serializers.ModelSerializer):
 class UsedTechnologyAndOthersSerializer(serializers.ModelSerializer):
     class Meta:
         model = UsedTechnologyAndOthers
-        fields = ['id', 'title', 'description', 'image', 'first_info']
+        fields = ['id', 'title', 'description', 'first_info']
 
+
+class FirstInfoAnyServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FirstInfoAnyService
+        fields = ['id', 'title', 'description', 'image']
 
 
 

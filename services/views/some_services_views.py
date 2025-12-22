@@ -163,11 +163,63 @@ class DeleteUsedTechnologyAndOthersAPIView(APIView):
 
 
 
+# FOR ADMIN PANEL FirstInfoAnyService
+
+class AddFirstInfoAnyServiceAPIView(APIView):
+    permission_classes = [IsAdminUser]
+    parser_classes = [MultiPartParser, FormParser]
+
+    @swagger_auto_schema(
+        tags=['admin_panel_first_info'],
+        request_body=FirstInfoAnyServiceSerializer,
+        responses={201: 'object successfully created'}
+    )
+    def post(self, request):
+        serializer = FirstInfoAnyServiceSerializer(data=request.data)
+
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class UpdateFirstInfoAnyServiceAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        tags=['admin_panel_first_info'],
+        request_body=FirstInfoAnyServiceSerializer,
+        responses={200: 'object successfully updated'}
+    )
+    def patch(self, request, pk):
+        try:
+            first_info = FirstInfoAnyService.objects.get(pk=pk)
+        except FirstInfoAnyService.DoesNotExist:
+            return Response({"message": "object not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = FirstInfoAnyServiceSerializer(first_info, data=request.data, partial=True)
+
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class DeleteFirstInfoAnyServiceAPIView(APIView):
+    permission_classes = [IsAdminUser]
 
+    @swagger_auto_schema(
+        tags=['admin_panel_first_info']
+    )
+    def delete(self, request, pk):
+        try:
+            first_info = FirstInfoAnyService.objects.get(pk=pk)
+        except FirstInfoAnyService.DoesNotExist:
+            return Response({"message": "object not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        first_info.delete()
+
+        return Response({"message": "object successfully deleted.!"}, status=status.HTTP_200_OK)
 
 
 
