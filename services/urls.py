@@ -4,8 +4,9 @@ from services.views.some_services_views import GetFirstInfoAnyServiceAPIView, Ge
         AddUsedTechnologyAndOthersAPIView, UpdateUsedTechnologyAndOthersAPIView, DeleteUsedTechnologyAndOthersAPIView, \
         AddFirstInfoAnyServiceAPIView, UpdateFirstInfoAnyServiceAPIView, DeleteFirstInfoAnyServiceAPIView
 
-from services.views.some_services_views2 import (GetClientOpinionAPIView, GetFrequentlyQuestionAPIView,
-                                                 GetSuccessfullyDevelopmentAPIView)
+from services.views.some_services_views2 import GetClientOpinionAPIView, \
+        GetSuccessfullyDevelopmentAPIView, AddSuccessfullyDevelopmentAPIView, UpdateSuccessfullyDevelopmentAPIView, \
+        DeleteSuccessfullyDevelopmentAPIView, AddClientOpinionAPIView, UpdateClientOptionAPIView, DeleteClientOpinionAPIView
 
 from services.views.user_message_views import TellUsAboutYourProjectAPIView
 
@@ -35,8 +36,16 @@ urlpatterns = [
     path('update_first_info/<int:pk>/', UpdateFirstInfoAnyServiceAPIView.as_view(), ),
     path('delete_first_info/<int:pk>/', DeleteFirstInfoAnyServiceAPIView.as_view(), ),
 
+    # FOR ADMIN PANEL SuccessfullyDevelopment
+    path('add_successfully_dev/', AddSuccessfullyDevelopmentAPIView.as_view(), ),
+    path('update_successfully_dev/<int:pk>/', UpdateSuccessfullyDevelopmentAPIView.as_view(), ),
+    path('delete_successfully_dev/<int:pk>/', DeleteSuccessfullyDevelopmentAPIView.as_view(), ),
 
 
+    # FOR ADMIN PANEL ClientOpinion
+    path('add_client_option/', AddClientOpinionAPIView.as_view(), ),
+    path('update_client_option/<int:pk>/', UpdateClientOptionAPIView.as_view(), ),
+    path('delete_client_option/<int:pk>/', DeleteClientOpinionAPIView.as_view(), ),
 
 
 ]

@@ -4,8 +4,13 @@ from .models.some_service_models2 import SuccessfullyDevelopment, ClientsOpinion
 from .models.some_service_models import FirstInfoAnyService, SpecialData, UsedTechnologyAndOthers
 
 admin.site.register([Industry, TellUsAboutYourProject])
-admin.site.register([SuccessfullyDevelopment, ClientsOpinion])
+admin.site.register(ClientsOpinion)
 admin.site.register([SpecialData, UsedTechnologyAndOthers])
+
+
+@admin.register(SuccessfullyDevelopment)
+class SuccessfullyDevelopmentModelAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title_1', 'description_1', 'image_1', 'title_2', 'description_2', 'image_2']
 
 
 class FrequentlyQuestionInline(admin.StackedInline):
