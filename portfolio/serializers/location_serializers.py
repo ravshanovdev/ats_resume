@@ -21,5 +21,18 @@ class LocationSerializer(serializers.ModelSerializer):
         return HelperLocationSerializer(helper_location, many=True).data
 
 
+# FOR ADMIN PANEL
 
+class AddLocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = ['id', 'zone']
+
+
+class AddHelperLocationSerializer(serializers.ModelSerializer):
+    # location = AddLocationSerializer(required=True)
+
+    class Meta:
+        model = HelperLocation
+        fields = ['id', 'country', 'description', 'location_url', 'location']
 
