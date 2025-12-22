@@ -17,7 +17,7 @@ class SpecialDataSerializer(serializers.ModelSerializer):
 class UsedTechnologyAndOthersSerializer(serializers.ModelSerializer):
     class Meta:
         model = UsedTechnologyAndOthers
-        fields = ['id', 'title', 'description', 'image']
+        fields = ['id', 'title', 'description', 'image', 'first_info']
 
 
 
