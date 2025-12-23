@@ -91,7 +91,6 @@ class DeleteLocationAPIView(APIView):
 
 # FOR ADMIN PANEL HelperLocation
 
-
 class AddHelperLocationAPIView(APIView):
     permission_classes = [IsAdminUser]
 

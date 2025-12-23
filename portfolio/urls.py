@@ -1,6 +1,7 @@
 from django.urls import path
 from portfolio.views.product_views import GetAllCategoryAPIView, GetProductsByCategoryAPIView, \
-            GetALlProductsAPIView
+            GetALlProductsAPIView, AddCategoryAPIView, UpdateCategoryAPIView, DeleteCategoryAPIView
+
 from portfolio.views.location_views import GetLocationAPIView, AddLocationAPIView, UpdateLocationAPIView, \
             DeleteLocationAPIView, AddHelperLocationAPIView, UpdateHelperLocationAPIView, DeleteHelperLocationAPIView, \
             GetHelperLocationAPIView
@@ -26,5 +27,10 @@ urlpatterns = [
     path("add_helper_location/", AddHelperLocationAPIView.as_view(), ),
     path("update_helper_location/<int:pk>/", UpdateHelperLocationAPIView.as_view(), ),
     path("delete_helper_location/<int:pk>/", DeleteHelperLocationAPIView.as_view(), ),
+
+    # FOR ADMIN PANEL Category
+    path("add_category/", AddCategoryAPIView.as_view(), ),
+    path("update_category/<int:pk>/", UpdateCategoryAPIView.as_view(), ),
+    path("delete_category/<int:pk>/", DeleteCategoryAPIView.as_view(), ),
 
 ]
