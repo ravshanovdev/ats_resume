@@ -7,7 +7,8 @@ from portfolio.views.product_views import GetAllCategoryAPIView, GetProductsByCa
 from portfolio.views.location_views import GetLocationAPIView, AddLocationAPIView, UpdateLocationAPIView, \
             DeleteLocationAPIView, AddHelperLocationAPIView, UpdateHelperLocationAPIView, DeleteHelperLocationAPIView, \
             GetHelperLocationAPIView
-from portfolio.views.team_members_views import GetAllTeamMembersAPIView
+from portfolio.views.team_members_views import GetAllTeamMembersAPIView, AddTeamMemberAPIView, UpdateTeamMemberAPIView, \
+            DeleteTeamMemberAPIView
 
 
 urlpatterns = [
@@ -46,6 +47,10 @@ urlpatterns = [
     path('update_user_opinion/<int:pk>/', UpdateUserOpinionAboutProductAPIView.as_view(), ),
     path('delete_user_opinion/<int:pk>/', DeleteUserOpinionAboutProductAPIView.as_view(), ),
 
+    # FOR ADMIN PANEL TeamMembers
+    path('add_team_member/', AddTeamMemberAPIView.as_view(), ),
+    path('update_team_member/<int:pk>/', UpdateTeamMemberAPIView.as_view(), ),
+    path('delete_team_member/<int:pk>/', DeleteTeamMemberAPIView.as_view(), ),
 
 
 

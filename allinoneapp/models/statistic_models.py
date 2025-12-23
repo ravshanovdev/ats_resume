@@ -11,7 +11,7 @@ class Statistic(models.Model):
 class HelperStatistic(models.Model):
     count = models.IntegerField(default=0)
     description = models.TextField()
-    statistic = models.ForeignKey(Statistic, on_delete=models.CASCADE)
+    statistic = models.ForeignKey(Statistic, on_delete=models.CASCADE, related_name='helperstatistic')
 
     def __str__(self):
         return f"{self.count}"
