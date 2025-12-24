@@ -2,7 +2,7 @@ from django.urls import path
 from allinoneapp.views.statistic_views import GetStatisticAPIView, AddStatisticAPIView, ChangeStatisticAPIView, \
             DeleteStatisticAPIView, AddHelperStatisticAPIView, UpdateHelperStatisticAPIView, DeleteHelperStatisticAPIView
 from allinoneapp.views.step_views import GetStepAPIView, AddCommonStepAPIView, UpdateCommonStepAPIView, \
-            DeleteCommonStepAPIView, AddStepAPIView, UpdateStepAPIView
+            DeleteCommonStepAPIView, AddStepAPIView, UpdateStepAPIView, DeleteStepAPIView
 
 
 urlpatterns = [
@@ -28,6 +28,7 @@ urlpatterns = [
     # FOR ADMIN PANEL Step
     path('add_step/', AddStepAPIView.as_view(), ),
     path('update_step/<int:pk>/', UpdateStepAPIView.as_view(), ),
+    path('delete_step/<int:pk>/', DeleteStepAPIView.as_view(), ),
 
 ]
 

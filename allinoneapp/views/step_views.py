@@ -123,6 +123,21 @@ class UpdateStepAPIView(APIView):
 
 
 
+class DeleteStepAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        tags=['admin_panel_step']
+    )
+    def delete(self, request, pk):
+        try:
+            step = Step.objects.get(pk=pk)
+        except Step.DoesNotExist:
+            return Response({"message": "object not found.!"},status=status.HTTP_404_NOT_FOUND)
+
+        step.delete()
+
+        return Response({"message": "object successfully deleted"}, status=status.HTTP_200_OK)
 
 
 
