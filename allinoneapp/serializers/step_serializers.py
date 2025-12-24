@@ -1,19 +1,6 @@
 from rest_framework import serializers
 from allinoneapp.models.step_models import CommonStep, Step
 
-
-class StepSerializer(serializers.ModelSerializer):
-    title = serializers.CharField(required=False, allow_blank=True)
-    description = serializers.CharField(required=False, allow_blank=True)
-    steps = serializers.CharField(required=False, allow_blank=True)
-
-    class Meta:
-        model = Step
-        fields = ['id', 'title', 'description', 'icon_file', 'steps']
-
-
-
-
 class CommonStepSerializer(serializers.ModelSerializer):
     step = serializers.SerializerMethodField()
 
@@ -32,8 +19,16 @@ class AddCommonStepSerializer(serializers.ModelSerializer):
         model = CommonStep
         fields = ['id', 'common_title']
 
-    def update(self, instance, validated_data):
-        instance.common_title = validated_data.get('common_title', instance.common_title)
-        instance.save()
-        return instance
+
+class StepSerializer(serializers.ModelSerializer):
+    title = serializers.CharField(required=False, allow_blank=True)
+    description = serializers.CharField(required=False, allow_blank=True)
+    steps = serializers.PrimaryKeyRelatedField(
+        queryset=CommonStep.objects.all(),
+        required=False
+    )
+
+    class Meta:
+        model = Step
+        fields = ['id', 'title', 'description', 'icon_file', 'steps']
 
