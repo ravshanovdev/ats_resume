@@ -45,7 +45,7 @@ class UpdateTeamMemberAPIView(APIView):
 
     @swagger_auto_schema(
         tags=['admin_panel_team_members'],
-        request_body=TeamMembersSerializer,
+        request_body=TeamMembersSerializer(partial=True),
         responses={201: f"{TeamMembersSerializer}"}
     )
     def patch(self, request, pk):

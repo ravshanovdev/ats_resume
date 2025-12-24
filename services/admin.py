@@ -5,8 +5,11 @@ from .models.some_service_models import FirstInfoAnyService, SpecialData, UsedTe
 
 admin.site.register([Industry, TellUsAboutYourProject])
 admin.site.register(ClientsOpinion)
-admin.site.register([SpecialData, UsedTechnologyAndOthers])
+admin.site.register([SpecialData])
 
+@admin.register(UsedTechnologyAndOthers)
+class UsedTechnologyAndOthersAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title']
 
 @admin.register(SuccessfullyDevelopment)
 class SuccessfullyDevelopmentModelAdmin(admin.ModelAdmin):

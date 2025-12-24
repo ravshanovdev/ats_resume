@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from services.models.some_service_models import FirstInfoAnyService, SpecialData, UsedTechnologyAndOthers
 from drf_yasg.utils import swagger_auto_schema
 from services.serializers.some_service_serializers import FirstInfoAnyServiceSerializer, SpecialDataSerializer, \
-    UsedTechnologyAndOthersSerializer
+    UsedTechnologyAndOthersSerializer, AddUsedTechnologyAndOthersSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 
 
@@ -60,10 +60,11 @@ class AddSpecialDateAPIView(APIView):
 
 class UpdateSpecialDateAPIView(APIView):
     permission_classes = [IsAdminUser]
+    parser_classes = [MultiPartParser, FormParser]
 
     @swagger_auto_schema(
         tags=['admin_panel_special_data'],
-        request_body=SpecialDataSerializer,
+        request_body=SpecialDataSerializer(partial=True),
         responses={200: "object successfully updated.!"}
     )
     def patch(self, request, pk):
@@ -108,12 +109,12 @@ class AddUsedTechnologyAndOthersAPIView(APIView):
 
     @swagger_auto_schema(
         tags=['admin_panel_used_technology'],
-        request_body=UsedTechnologyAndOthersSerializer,
-        responses={201: "object successfully created"}
+        request_body=AddUsedTechnologyAndOthersSerializer,
+        responses={201: f"{AddUsedTechnologyAndOthersSerializer}"}
 
     )
     def post(self, request):
-        serializer = UsedTechnologyAndOthersSerializer(data=request.data)
+        serializer = AddUsedTechnologyAndOthersSerializer(data=request.data)
 
         if serializer.is_valid(raise_exception=True):
             serializer.save()
@@ -127,7 +128,7 @@ class UpdateUsedTechnologyAndOthersAPIView(APIView):
 
     @swagger_auto_schema(
         tags=['admin_panel_used_technology'],
-        request_body=UsedTechnologyAndOthersSerializer,
+        request_body=UsedTechnologyAndOthersSerializer(partial=True),
         responses={200: 'object successfully updated'}
     )
     def patch(self, request, pk):
@@ -188,7 +189,7 @@ class UpdateFirstInfoAnyServiceAPIView(APIView):
 
     @swagger_auto_schema(
         tags=['admin_panel_first_info'],
-        request_body=FirstInfoAnyServiceSerializer,
+        request_body=FirstInfoAnyServiceSerializer(partial=True),
         responses={200: 'object successfully updated'}
     )
     def patch(self, request, pk):

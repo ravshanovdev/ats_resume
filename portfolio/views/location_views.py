@@ -55,7 +55,7 @@ class UpdateLocationAPIView(APIView):
 
     @swagger_auto_schema(
         tags=['admin_panel_location'],
-        request_body=AddLocationSerializer,
+        request_body=AddLocationSerializer(partial=True),
         responses={200: f"{AddLocationSerializer}"}
     )
     def patch(self, request, pk):
@@ -114,7 +114,7 @@ class UpdateHelperLocationAPIView(APIView):
 
     @swagger_auto_schema(
         tags=['admin_panel_helper_location'],
-        request_body=AddHelperLocationSerializer,
+        request_body=AddHelperLocationSerializer(partial=True),
         responses={200: f"{AddHelperLocationSerializer}"}
     )
     def patch(self, request, pk):

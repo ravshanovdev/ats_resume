@@ -30,6 +30,7 @@ class HelperLocationInline(admin.StackedInline):
     model = HelperLocation
 
 
+
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
     list_display = ['id', 'zone']

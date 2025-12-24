@@ -3,9 +3,15 @@ from allinoneapp.models.step_models import CommonStep, Step
 
 
 class StepSerializer(serializers.ModelSerializer):
+    title = serializers.CharField(required=False, allow_blank=True)
+    description = serializers.CharField(required=False, allow_blank=True)
+    steps = serializers.CharField(required=False, allow_blank=True)
+
     class Meta:
         model = Step
-        fields = ['id', 'title', 'description', 'icon_file']
+        fields = ['id', 'title', 'description', 'icon_file', 'steps']
+
+
 
 
 class CommonStepSerializer(serializers.ModelSerializer):
@@ -19,3 +25,15 @@ class CommonStepSerializer(serializers.ModelSerializer):
         step = Step.objects.filter(steps=obj)
         serializer = StepSerializer(step, many=True)
         return serializer.data
+
+
+class AddCommonStepSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CommonStep
+        fields = ['id', 'common_title']
+
+    def update(self, instance, validated_data):
+        instance.common_title = validated_data.get('common_title', instance.common_title)
+        instance.save()
+        return instance
+

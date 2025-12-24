@@ -20,6 +20,7 @@ class StatisticModelAdmin(admin.ModelAdmin):
 
 @admin.register(CommonStep)
 class CommonStepModelAdmin(admin.ModelAdmin):
+    list_display = ['id', 'common_title']
 
     inlines = [
         StepInline,

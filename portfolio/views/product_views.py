@@ -76,7 +76,7 @@ class UpdateCategoryAPIView(APIView):
 
     @swagger_auto_schema(
         tags=['admin_panel_category'],
-        request_body=CategorySerializer,
+        request_body=CategorySerializer(partial=True),
         responses={200: f"{CategorySerializer}"}
     )
     def patch(self, request, pk):
@@ -136,7 +136,7 @@ class UpdateProductAPIView(APIView):
 
     @swagger_auto_schema(
         tags=['admin_panel_product'],
-        request_body=AddProductSerializer,
+        request_body=AddProductSerializer(partial=True),
         responses={200: f"{AddProductSerializer}"}
     )
     def patch(self, request, pk):
@@ -194,7 +194,7 @@ class UpdateUserOpinionAboutProductAPIView(APIView):
 
     @swagger_auto_schema(
         tags=['admin_panel_user_opinion_about_product'],
-        request_body=UserOpinionAboutProductSerializer,
+        request_body=UserOpinionAboutProductSerializer(partial=True),
         responses={200: f"{UserOpinionAboutProductSerializer}"}
     )
     def patch(self, request, pk):

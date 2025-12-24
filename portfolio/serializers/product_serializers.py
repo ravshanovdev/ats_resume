@@ -7,6 +7,11 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ['id', 'name']
 
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.save()
+        return instance
+
 
 
 class UserOpinionAboutProductSerializer(serializers.ModelSerializer):
@@ -30,6 +35,11 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class AddProductSerializer(serializers.ModelSerializer):
     user_opinion = serializers.SerializerMethodField()
+    name = serializers.CharField(required=False, allow_blank=True)
+    category = serializers.CharField(required=False, allow_blank=True)
+    description = serializers.CharField(required=False, allow_blank=True)
+    play_market_url = serializers.CharField(required=False, allow_blank=True)
+    app_store_url = serializers.CharField(required=False, allow_blank=True)
 
     class Meta:
         model = Product
@@ -37,3 +47,14 @@ class AddProductSerializer(serializers.ModelSerializer):
 
     def get_user_opinion(self, obj):
         return UserOpinionAboutProduct.objects.filter(product=obj)
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.category = validated_data.get('category', instance.category)
+        instance.description = validated_data.get('description', instance.description)
+        if 'image' in validated_data:
+            instance.image = validated_data['image']
+        instance.play_market_url = validated_data.get('play_market_url', instance.play_market_url)
+        instance.app_store_url = validated_data.get('app_store_url', instance.app_store_url)
+        instance.save()
+        return instance
