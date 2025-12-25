@@ -4,10 +4,16 @@ from allinoneapp.views.statistic_views import GetStatisticAPIView, AddStatisticA
 from allinoneapp.views.step_views import GetStepAPIView, AddCommonStepAPIView, UpdateCommonStepAPIView, \
             DeleteCommonStepAPIView, AddStepAPIView, UpdateStepAPIView, DeleteStepAPIView
 
+from allinoneapp.views.open_position_views import GetAllCommonOpenPositionAPIView, AddCommonOpenPositionAPIView, \
+    UpdateCommonOpenPositionAPIView, DeleteCommonOpenPositionAPIView, AddHelperPositionAPIView, UpdateHelperPositionAPIView, \
+    DeleteHelperPositionAPIView
+
 
 urlpatterns = [
     path('get_statistic/<int:pk>/', GetStatisticAPIView.as_view(), ),
     path('get_common_step/<int:pk>/', GetStepAPIView.as_view(), ),
+    path('get_all_common_positions/', GetAllCommonOpenPositionAPIView.as_view(), ),
+
 
     # FOR ADMIN PANEL statistic
     path('add_statistic/', AddStatisticAPIView.as_view(), ),
@@ -29,6 +35,17 @@ urlpatterns = [
     path('add_step/', AddStepAPIView.as_view(), ),
     path('update_step/<int:pk>/', UpdateStepAPIView.as_view(), ),
     path('delete_step/<int:pk>/', DeleteStepAPIView.as_view(), ),
+
+    # FOR ADMIN PANEL CommonPosition
+    path('add_common_position/', AddCommonOpenPositionAPIView.as_view(), ),
+    path('update_common_position/<int:pk>/', UpdateCommonOpenPositionAPIView.as_view(), ),
+    path('delete_common_position/<int:pk>/', DeleteCommonOpenPositionAPIView.as_view(), ),
+
+    # ADMIN PANEL HelperPosition
+    path('add_helper_position/', AddHelperPositionAPIView.as_view(), ),
+    path('update_helper_position/<int:pk>/', UpdateHelperPositionAPIView.as_view(), ),
+    path('delete_helper_position/<int:pk>/', DeleteHelperPositionAPIView.as_view(), ),
+
 
 ]
 
