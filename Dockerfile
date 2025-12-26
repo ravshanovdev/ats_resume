@@ -10,4 +10,5 @@ RUN pip install --no-cache-dir -r req.txt
 
 COPY . .
 
-CMD ["daphne", "-b", "0.0.0.0", "-p", "8000", "config.asgi:application"]
+RUN python manage.py collectstatic --noinput
+
