@@ -19,6 +19,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -30,6 +31,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'portfolio',
     'allinoneapp',
+    'channels',
+    'chat',
 
     'drf_yasg',
 
@@ -63,8 +66,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+# WSGI_APPLICATION = 'config.wsgi.application'
+ASGI_APPLICATION = 'config.asgi.application'
 
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
