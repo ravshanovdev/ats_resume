@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-!)nf!^dn2!mm1jy3uvy+pg@%qzl!0(&u@z@kdmjt!vpw*@m@m-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "atsresume123.pythonanywhere.com"]
 
 
 # Application definition
@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'services',
     'rest_framework',
     'portfolio',
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
 
     'drf_yasg',
 
+    'corsheaders',
 
 ]
 
@@ -130,3 +132,20 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://atsresume123.pythonanywhere.com",
+
+    "http://localhost:5173",
+
+]
+
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
