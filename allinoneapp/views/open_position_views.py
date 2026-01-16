@@ -2,13 +2,13 @@ from allinoneapp.serializers.open_position_serializers import CommonOpenPosition
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, AllowAny
 from allinoneapp.models.open_position_models import CommonOpenPosition, HelperOpenPosition
 from drf_yasg.utils import swagger_auto_schema
 
 
 class GetAllCommonOpenPositionAPIView(APIView):
-    permission_classes = [IsAdminUser]
+    permission_classes = [AllowAny]
 
     def get(self, request):
         positions = CommonOpenPosition.objects.all()

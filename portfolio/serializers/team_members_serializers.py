@@ -8,7 +8,7 @@ class TeamMembersSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TeamMembers
-        fields = ['id', 'name', 'description', 'picture']
+        fields = ['id', 'category', 'name', 'description', 'picture']
 
 
     def update(self, instance, validated_data):

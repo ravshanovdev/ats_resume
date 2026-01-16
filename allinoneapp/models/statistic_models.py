@@ -1,7 +1,9 @@
 from django.db import models
+from services.models.category_for_all_models import Category
 
 
 class Statistic(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     name = models.CharField(max_length=155)
     created_at = models.DateTimeField(auto_now_add=True)
 

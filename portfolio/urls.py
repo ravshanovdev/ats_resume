@@ -10,9 +10,12 @@ from portfolio.views.location_views import GetLocationAPIView, AddLocationAPIVie
 from portfolio.views.team_members_views import GetAllTeamMembersAPIView, AddTeamMemberAPIView, UpdateTeamMemberAPIView, \
             DeleteTeamMemberAPIView
 
+from portfolio.views.blog_views import GetAllBlogsAPIView, AddBlogForAdminAPIView, UpdateBlogAPIView, DeleteBlogAPIView
+
+
 
 urlpatterns = [
-    path('get_all_categorys/', GetAllCategoryAPIView.as_view(), ),
+    path('get_all_categories/', GetAllCategoryAPIView.as_view(), ),
     path('get_product_by_category/<int:pk>/', GetProductsByCategoryAPIView.as_view(), ),
     path('get_all_products/', GetALlProductsAPIView.as_view(), ),
     path('get_all_user_opinion/', GetAllUserOpinionAboutProductAPIView.as_view(), ),
@@ -20,6 +23,8 @@ urlpatterns = [
     path('get_location/<int:pk>/', GetLocationAPIView.as_view(), ),
     path('get_helper_location/', GetHelperLocationAPIView.as_view(), ),
     path('get_all_members/', GetAllTeamMembersAPIView.as_view(), ),
+    path('get_all_blog/', GetAllBlogsAPIView.as_view(), ),
+
 
 
     # FOR ADMIN PANEL Location
@@ -51,6 +56,12 @@ urlpatterns = [
     path('add_team_member/', AddTeamMemberAPIView.as_view(), ),
     path('update_team_member/<int:pk>/', UpdateTeamMemberAPIView.as_view(), ),
     path('delete_team_member/<int:pk>/', DeleteTeamMemberAPIView.as_view(), ),
+
+    # FOR ADMIN PANEL Blog
+    path('add_blog/', AddBlogForAdminAPIView.as_view(), ),
+    path('update_blog/<int:pk>/', UpdateBlogAPIView.as_view(), ),
+    path('delete_blog/<int:pk>/', DeleteBlogAPIView.as_view(), ),
+
 
 
 

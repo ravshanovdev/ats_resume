@@ -1,6 +1,9 @@
 from django.db import models
+from .category_for_all_models import Category
+
 
 class FirstInfoAnyService(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     title = models.CharField(max_length=250)
     description = models.TextField()
     image = models.ImageField(upload_to='images/', blank=True, null=True)
@@ -11,6 +14,7 @@ class FirstInfoAnyService(models.Model):
 
 
 class SpecialData(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     title_1 = models.CharField(max_length=250)
     description_1 = models.TextField()
     title_2 = models.CharField(max_length=250, blank=True, null=True)

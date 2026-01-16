@@ -13,7 +13,7 @@ class CommonOpenPositionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CommonOpenPosition
-        fields = ['id', 'title', 'helper_position']
+        fields = ['id', 'category', 'title', 'helper_position']
 
     def get_helper_position(self, obj):
         return HelperOpenPositionSerializer(HelperOpenPosition.objects.filter(common_op=obj), many=True).data

@@ -1,8 +1,10 @@
 from django.db import models
 from .some_service_models import FirstInfoAnyService
+from .category_for_all_models import Category
 
 
 class SuccessfullyDevelopment(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     common_title = models.CharField(max_length=150)
     title_1 = models.CharField(max_length=250)
     description_1 = models.TextField()
@@ -17,6 +19,7 @@ class SuccessfullyDevelopment(models.Model):
 
 
 class ClientsOpinion(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     name = models.CharField(max_length=100)
     description = models.TextField()
     picture = models.ImageField(upload_to='images/', blank=True, null=True)

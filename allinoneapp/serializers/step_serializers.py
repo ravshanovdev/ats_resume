@@ -6,7 +6,7 @@ class CommonStepSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CommonStep
-        fields = ['id', 'common_title', 'step']
+        fields = ['id', 'category', 'common_title', 'step']
 
     def get_step(self, obj):
         step = Step.objects.filter(steps=obj)
@@ -17,7 +17,7 @@ class CommonStepSerializer(serializers.ModelSerializer):
 class AddCommonStepSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommonStep
-        fields = ['id', 'common_title']
+        fields = ['id', 'category', 'common_title']
 
 
 class StepSerializer(serializers.ModelSerializer):

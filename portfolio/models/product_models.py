@@ -1,11 +1,5 @@
 from django.db import models
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=150)
-
-    def __str__(self):
-        return self.name
+from services.models.category_for_all_models import Category
 
 
 class Product(models.Model):

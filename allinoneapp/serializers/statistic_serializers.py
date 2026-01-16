@@ -13,7 +13,7 @@ class StatisticSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Statistic
-        fields = ['id', 'helper_statistic', 'created_at']
+        fields = ['id', 'category', 'helper_statistic', 'created_at']
 
 
     def get_helper_statistic(self, obj):
@@ -31,5 +31,5 @@ class AddHelperStatisticSerializer(serializers.ModelSerializer):
 class AddStatisticSerializer(serializers.ModelSerializer):
     class Meta:
         model = Statistic
-        fields = ['id', 'name', 'created_at']
+        fields = ['id', 'category', 'name', 'created_at']
         read_only_fields = ['created_at']

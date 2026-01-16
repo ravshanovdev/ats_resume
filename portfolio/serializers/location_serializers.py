@@ -14,7 +14,7 @@ class LocationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Location
-        fields = ['id', 'zone', 'helper_location']
+        fields = ['id', 'category', 'zone', 'helper_location']
 
     def get_helper_location(self, obj):
         helper_location = HelperLocation.objects.filter(location=obj)

@@ -10,7 +10,7 @@ class SpecialDataSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SpecialData
-        fields = ['id', 'title_1', 'description_1', 'title_2', 'description_2', 'image']
+        fields = ['id', 'category', 'title_1', 'description_1', 'title_2', 'description_2', 'image']
 
     def update(self, instance, validated_data):
         instance.title_1 = validated_data.get('title_1', instance.title_1)
@@ -50,7 +50,7 @@ class AddUsedTechnologyAndOthersSerializer(serializers.ModelSerializer):
 class FirstInfoAnyServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = FirstInfoAnyService
-        fields = ['id', 'title', 'description', 'image']
+        fields = ['id', 'category', 'title', 'description', 'image']
 
 
 

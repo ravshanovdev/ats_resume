@@ -1,7 +1,9 @@
 from django.db import models
+from services.models.category_for_all_models import Category
 
 
 class CommonOpenPosition(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     title = models.CharField(max_length=155)
 
     def __str__(self):
